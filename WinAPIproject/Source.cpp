@@ -1,4 +1,5 @@
 #include <windows.h>
+#include "resource.h"
 // Store handles to the main window and application
 // instance globally.
 HWND ghMainWnd = 0;
@@ -79,7 +80,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,PSTR cmdLine, in
 	wc.cbClsExtra = 0;
 	wc.cbWndExtra = 0;
 	wc.hInstance = ghAppInst;
-	wc.hIcon = ::LoadIcon(0, IDI_APPLICATION);
+	wc.hIcon = ::LoadIcon(ghAppInst, MAKEINTRESOURCE(IDI_ICON2));
 	wc.hCursor = ::LoadCursor(0, IDC_CROSS);
 	//wc.hbrBackground = (HBRUSH)::GetStockObject(WHITE_BRUSH);
 	wc.hbrBackground = blueBrush;
