@@ -53,7 +53,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,PSTR cmdLine, in
 	RegisterClass(&wc);
 	// Step 4: Create the window, and save handle in globla
 	// window handle variable ghMainWnd.
-	ghMainWnd = ::CreateWindow(L"MyWndClassName", L"MyWindow", WS_OVERLAPPEDWINDOW, 0, 0, 500, 500, 0, 0, ghAppInst, 0);
+	ghMainWnd = ::CreateWindow(L"MyWndClassName", L"MyWindow", WS_OVERLAPPEDWINDOW | WS_HSCROLL | WS_VSCROLL, 0, 0, 500, 500, 0, 0, ghAppInst, 0);
 	if (ghMainWnd == 0)
 	{
 		::MessageBox(0, L"CreateWindow - Failed", 0, 0);
