@@ -65,6 +65,13 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,PSTR cmdLine, in
 {
 	// Save handle to application instance.
 	ghAppInst = hInstance;
+	
+	//creating a blue brush
+	LOGBRUSH lb;
+	lb.lbStyle = BS_SOLID;
+	lb.lbColor = RGB(0, 0, 255);
+	HBRUSH blueBrush = CreateBrushIndirect(&lb);
+	
 	// Step 2: Fill out a WNDCLASS instances.
 	WNDCLASS wc;
 	wc.style = CS_HREDRAW | CS_VREDRAW;
@@ -73,8 +80,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,PSTR cmdLine, in
 	wc.cbWndExtra = 0;
 	wc.hInstance = ghAppInst;
 	wc.hIcon = ::LoadIcon(0, IDI_APPLICATION);
-	wc.hCursor = ::LoadCursor(0, IDC_ARROW);
-	wc.hbrBackground = (HBRUSH)::GetStockObject(WHITE_BRUSH);
+	wc.hCursor = ::LoadCursor(0, IDC_CROSS);
+	//wc.hbrBackground = (HBRUSH)::GetStockObject(WHITE_BRUSH);
+	wc.hbrBackground = blueBrush;
 	wc.lpszMenuName = 0;
 	wc.lpszClassName = L"MyWndClassName";
 	
@@ -85,7 +93,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,PSTR cmdLine, in
 	wc2.cbWndExtra = 0;
 	wc2.hInstance = ghAppInst;
 	wc2.hIcon = ::LoadIcon(0, IDI_APPLICATION);
-	wc2.hCursor = ::LoadCursor(0, IDC_ARROW);
+	wc2.hCursor = ::LoadCursor(0, IDC_HAND);
 	wc2.hbrBackground = (HBRUSH)::GetStockObject(WHITE_BRUSH);
 	wc2.lpszMenuName = 0;
 	wc2.lpszClassName = L"MyWndClassName2";
@@ -97,7 +105,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,PSTR cmdLine, in
 	wc3.cbWndExtra = 0;
 	wc3.hInstance = ghAppInst;
 	wc3.hIcon = ::LoadIcon(0, IDI_APPLICATION);
-	wc3.hCursor = ::LoadCursor(0, IDC_ARROW);
+	wc3.hCursor = ::LoadCursor(0, IDC_HELP);
 	wc3.hbrBackground = (HBRUSH)::GetStockObject(WHITE_BRUSH);
 	wc3.lpszMenuName = 0;
 	wc3.lpszClassName = L"MyWndClassName3";
