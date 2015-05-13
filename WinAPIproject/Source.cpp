@@ -11,12 +11,16 @@ WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 	{
 		// Handle left mouse button click message.
 	case WM_LBUTTONDOWN:
-		MessageBox(0, L"WM_LBUTTONDOWN message.", L"Msg", MB_OK);
+		MessageBox(ghMainWnd, L"WM_LBUTTONDOWN message.", L"Msg", MB_OK);
 		return 0;
 		// Handle key down message.
 	case WM_KEYDOWN:
 		if (wParam == VK_ESCAPE)
-			DestroyWindow(ghMainWnd);
+		{
+			int ms = MessageBox(ghMainWnd, L"WM_LBUTTONDOWN message.", L"Msg", MB_YESNO);
+			if (ms == 6)
+				DestroyWindow(ghMainWnd);
+		}
 		return 0;
 		// Handle destroy window message.
 	case WM_DESTROY:
@@ -29,9 +33,7 @@ WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 }
 
 // WinMain: Entry point for a Windows application.
-int WINAPI
-WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
-PSTR cmdLine, int showCmd)
+int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,PSTR cmdLine, int showCmd)
 {
 	// Save handle to application instance.
 	ghAppInst = hInstance;
